@@ -1,48 +1,11 @@
+from funcs import readJSON, getParamsNames, getParamsCombinations, strFromParams
+from datetime import datetime
 import subprocess
 import traceback
-from datetime import datetime
 import time
-import json
 import os
 import sys
-import itertools
 import getpass
-
-
-def readJSON(path):
-    with open(path, 'r') as f:
-        file = f.read()
-    return json.loads(file)
-
-
-def getParamsNames(paramArr):
-    fileParamsNames = None
-    cmdParamsNames = None
-
-    if 'fileParams' in paramArr[0]:
-        fileParamsNames = list(paramArr[0]['fileParams'].keys())
-    if 'cmdParams' in paramArr[0]:
-        cmdParamsNames = list(paramArr[0]['cmdParams'].keys())
-
-    return {'fileParams': fileParamsNames, 'cmdParams': cmdParamsNames}
-
-
-def getParamsCombinations(params, paramsNames):
-    combinations = []
-    paramDict = dict.fromkeys(paramsNames)
-    for paramList in itertools.product(*list(params.values())):
-        for i in range(len(paramsNames)):
-            paramDict[paramsNames[i]] = paramList[i]
-        combinations.append(paramDict.copy())
-    return combinations
-
-
-def strFromParams(paramDict, templateStr):
-    if paramDict:
-        for params in paramDict:
-            yield templateStr.format(**params)
-    else:
-        yield templateStr
 
 
 if __name__ == '__main__':
@@ -58,7 +21,7 @@ if __name__ == '__main__':
     if 'logTime' not in config:
         config['logTime'] = 10
     if 'printQueue' not in config:
-        config['printQueue'] = false
+        config['printQueue'] = False
 
     longUserName = getpass.getuser()
     shortUserName = longUserName[:8]

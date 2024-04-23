@@ -40,5 +40,5 @@ printQueue, runsCount, maxQueue, logTime - опцианальные параме
 
 ## Запуск программы
 ```sh
-python main.py config_for_hpcg.json
+python test_runner.py config_for_hpcg.json
 ```
