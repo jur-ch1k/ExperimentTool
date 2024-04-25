@@ -19,18 +19,15 @@
   "orderBy": [
     {
       "line": 20,
-      "word": 3,
-      "orderType": "int"
+      "word": 3
     },
     {
       "line": 22,
-      "word": 3,
-      "orderType": "int"
+      "word": 3
     },
     {
       "line": 23,
-      "word": 3,
-      "orderType": "int"
+      "word": 3
     }
   ]
 }

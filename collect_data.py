@@ -37,8 +37,8 @@ if __name__ == '__main__':
         collectLen = len(config['collectFrom']) + 1
         for tmp in data:
             combinations[tuple(tmp[collectLen:])] += [tmp[:collectLen]]
-        for key in sorted(combinations.keys(), key=lambda x: tupleForSort(x, config)):
-            print(*key)
+        for key in sorted(combinations.keys(), key=lambda x: tupleForSort(x)):
+            print('ordered by values:', *key)
             for elem in combinations[key]:
                 print(*elem, sep='\t')
 

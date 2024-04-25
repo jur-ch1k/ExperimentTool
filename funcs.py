@@ -38,17 +38,16 @@ def strFromParams(paramDict, templateStr):
         yield templateStr
 
 
-def tupleForSort(tup, config):
-    orderLen = len(config['orderBy'])
+def tupleForSort(tup):
     res = ()
 
     for i, elem in enumerate(tup):
-        #преобразование к заданному типу для сортировки
-        if config['orderBy'][i]['orderType'] == 'int':
+        try:
             res += int(elem),
-        elif config['orderBy'][i]['orderType'] == 'float':
-            res += float(elem),
-        elif config['orderBy'][i]['orderType'] == 'str':
-            res += elem,
+        except ValueError:
+            try:
+                res += float(elem),
+            except ValueError:
+                res += elem,
 
     return res
